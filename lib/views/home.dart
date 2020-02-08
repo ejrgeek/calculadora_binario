@@ -1,12 +1,14 @@
+import 'package:calculadora_binario/controllers/controller.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 
 
 class Home extends StatelessWidget {
 
   TextEditingController _firstValue = TextEditingController();
   TextEditingController _secondValue = TextEditingController();
-  var _result = "Resultado";
-  List<bool> _selected = List.generate(5, (_) => false);
+
+  final controller = Controller();
 
   @override
   Widget build(BuildContext context) {
@@ -21,12 +23,13 @@ class Home extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
 
-            Padding(
-              padding: EdgeInsets.only(bottom: 40),
-              child: Text(
-                    _result,
-                    style: TextStyle(fontSize: 30),
-                  ),
+            Observer(
+              builder: (_) {
+                return Padding(
+                  padding: EdgeInsets.only(bottom: 40),
+                  child: Text('${controller.result.value}', style: TextStyle(fontSize: 40, color: Colors.blue),),
+                  );
+              }
             ),
             
             Padding(
@@ -44,7 +47,7 @@ class Home extends StatelessWidget {
                   ),
 
                   TextField(
-                    controller: _firstValue,
+                    controller: _secondValue,
                     decoration: InputDecoration(
                       labelText: "Segundo Valor"
                     ),
@@ -68,8 +71,11 @@ class Home extends StatelessWidget {
                 Text("/", style: TextStyle(fontSize: 25),),
                 Text("%", style: TextStyle(fontSize: 25),),
               ],
-              onPressed: (index){},
-              isSelected: _selected,
+              onPressed: (index){
+                controller.getData(index, _firstValue.text, _secondValue.text);
+                controller.resultCalc();
+              },
+              isSelected: controller.list(),
             )
 
           ],
