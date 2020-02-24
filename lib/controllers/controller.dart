@@ -1,5 +1,5 @@
 import 'package:mobx/mobx.dart';
-import 'package:calculadora_binario/service/binary_calc.dart' as binary_calc;
+import 'package:calculadora_binario/binary_methods/binary_calc.dart' as binary_calc;
 
 class Controller {
 

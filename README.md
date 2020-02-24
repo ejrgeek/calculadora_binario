@@ -1,3 +1,3 @@
 # Calculadora Binário
 
-### Uma aplicação Flutter baseada no Desafio 02 da Digistarts
+### Uma aplicação Flutter para Calcular Numeros Binarios

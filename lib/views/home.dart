@@ -5,8 +5,8 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 
 class Home extends StatelessWidget {
 
-  TextEditingController _firstValue = TextEditingController();
-  TextEditingController _secondValue = TextEditingController();
+  final TextEditingController _firstValue = TextEditingController();
+  final TextEditingController _secondValue = TextEditingController();
 
   final controller = Controller();
 
@@ -31,7 +31,7 @@ class Home extends StatelessWidget {
                   );
               }
             ),
-            
+
             Padding(
               padding: EdgeInsets.all(32),
               child: Column(
@@ -41,7 +41,7 @@ class Home extends StatelessWidget {
                   TextField(
                     controller: _firstValue,
                     decoration: InputDecoration(
-                      labelText: "Primeiro Valor"
+                      labelText: "Primeiro Valor",
                     ),
                     keyboardType: TextInputType.number,
                   ),
